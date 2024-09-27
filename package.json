@@ -1,0 +1,20 @@
+{
+  "name": "ww-loja-de-produtos-em-ti",
+  "version": "1.0.0",
+  "description": "Este projeto foi criado para ajudar nas discussões sobre o processo de construção de aplicações web usando javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "firebase": "^10.13.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.4",
+    "pug": "^3.0.3",
+    "purecss": "^3.0.0"
+  }
+}

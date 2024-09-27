@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .l-box-lrg.is-center
+    h1.content-head-ribbon.content-head Editar Produto
+    form.pure-form.pure-form-stacked(action=`/editar-produto/${id}`, method="post")
+      fieldset
+        label(for="nome") Nome
+        input#nome(type="text", name="nome", value=produto.nome, required)
+
+        label(for="descricao") Descrição
+        textarea#descricao(name="descricao", required)= produto.descricao
+
+        label(for="preco") Preço
+        input#preco(type="number", name="preco", step="0.01", value=produto.preco, required)
+
+        label(for="imgurl") Url da Imagem:
+        input#imgurl(type="text", name="imgurl", value=produto.imgurl)
+
+        button.pure-button.pure-button-primary(type="submit") Salvar

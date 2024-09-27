@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1.content-head-ribbon.content-head Produtos
+
+  //- Formulário de Ordenação
+  form(method="get", action="/produtos", class="ordenar-form")
+    label(for="orderBy") Ordenar por:
+    select(name="orderBy")
+      option(value="nome" selected=(orderBy === 'nome')) Nome
+      option(value="preco" selected=(orderBy === 'preco')) Preço
+    select(name="direction")
+      option(value="asc" selected=(direction === 'asc')) Ascendente
+      option(value="desc" selected=(direction === 'desc')) Descendente
+    button.pure-button.pure-button-primary(type="submit") Ordenar
+
+  .container-card
+    if Array.isArray(produtos) && produtos.length > 0
+      each produto in produtos
+        .card
+          img(src=produto.imgurl width="300" height="300")
+          h2= produto.nome
+          p= produto.descricao
+          p Preço: R$ #{produto.preco.toFixed(2)}
+
+          if usuarioLogado
+            a.pure-button.pure-button-primary(href=`/editar-produto/${produto.id}`) Editar
+            form(action=`/remover-produto/${produto.id}`, method='post', style='display:inline;')
+              button.pure-button.pure-button-primary(type="submit") Remover
+    else
+      p Não há produtos cadastrados.
+
+  //- Controles de Paginação
+  .pagination
+    if hasPreviousPage
+      a.pure-button.pure-button-primary(href=`/produtos?page=${currentPage - 1}&orderBy=${orderBy}&direction=${direction}`) Página Anterior
+    else
+      span.pure-button.pure-button-disabled Página Anterior
+
+    if hasNextPage
+      a.pure-button.pure-button-primary(href=`/produtos?page=${currentPage + 1}&orderBy=${orderBy}&direction=${direction}`) Próxima Página
+    else
+      span.pure-button.pure-button-disabled Próxima Página

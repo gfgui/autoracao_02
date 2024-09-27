@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .content
+    h1 Bem-vindo ao Gerenciador de Produtos
+    p Este site foi desenvolvido para tornar o gerenciamento de produtos fácil e eficiente!
+    p Aqui, você pode adicionar novos produtos à sua lista de maneira rápida, editar os detalhes dos produtos existentes sempre que necessário e remover aqueles que não são mais relevantes para o seu negócio.
+    h2 Produtos em Destaque:
+    .cards-destaque
+      if produtos.length
+        each produto in produtos
+          .card-destaque
+            h3= produto.nome
+            p= produto.descricao
+            p Preço: R$ #{produto.preco.toFixed(2)}
+      else
+        p Não há produtos destacados no momento.
+
+  div
+    a.pure-button.pure-button-primary(href="/produtos") Ver todos os produtos

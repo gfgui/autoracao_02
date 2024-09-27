@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    h1 Cadastro
+    if error
+      p.error= error
+    form.pure-form.pure-form-stacked(action="/cadastro", method="post")
+      fieldset
+        label(for="nome") Nome:
+        input(type="text", id="nome", name="nome", required)
+        label(for="emailCadastro") Email:
+        input(type="email", id="emailCadastro", name="email", required)
+        label(for="senhaCadastro") Senha:
+        input(type="password", id="senhaCadastro", name="senha", required)
+        button.pure-button.pure-button-primary(type="submit") Cadastrar

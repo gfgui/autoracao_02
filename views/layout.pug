@@ -1,0 +1,35 @@
+doctype html
+html(lang="pt-br")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title} Old Store
+    link(rel="stylesheet", href="/pure-min.css")
+    link(rel="stylesheet", href="/style.css")
+  body
+    header
+      .pure-menu.pure-menu-horizontal
+        a.pure-menu-heading.pure-menu-link(href="/") Old Store
+        ul.pure-menu-list
+          li.pure-menu-item
+            a.pure-menu-link(href="/produtos") Produtos
+
+          if !usuarioLogado
+            li.pure-menu-item
+              a.pure-menu-link(href="/login") Login
+            li.pure-menu-item
+              a.pure-menu-link(href="/cadastro") Cadastro
+          else
+            li.pure-menu-item
+              a.pure-menu-link(href="/cadastro-produtos") Cadastro de Produto
+            li.pure-menu-item
+              span.pure-menu-link User: #{usuarioLogado}
+            li.pure-menu-item
+              a.pure-menu-link(href='/logout') Sair
+
+    main
+      block content
+
+    footer
+      .footer-content
+        p &copy; 2024 Old Store. Todos os direitos reservados.

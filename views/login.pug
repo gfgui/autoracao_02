@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .container
+    h1 Login
+    if success
+      p.success= success
+    if error
+      p.error= error
+    if user
+      p Bem-vindo(a), #{user.displayName || 'Usuário'}!
+    form.pure-form.pure-form-stacked(action="/login", method="post")
+      fieldset
+        label(for="email") Email:
+        input(type="email", id="email", name="email", required)
+        label(for="senha") Senha:
+        input(type="password", id="senha", name="senha", required)
+        button.pure-button.pure-button-primary(type="submit") Entrar

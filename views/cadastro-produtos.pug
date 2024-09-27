@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container
+    h1 Cadastro de Produto
+    form.pure-form.pure-form-stacked(action="/cadastro-produtos", method="post")
+      fieldset
+        h3 Informações do Produto:
+        div
+          label(for="nomeProduto") Nome:
+          input#nomeProduto(type="text", name="nomeProduto", required)
+        div
+          label(for="descricao") Descrição:
+          textarea#descricao(name="descricao", required)
+        div
+          label(for="preco") Preço:
+          input#preco(type="number", name="preco", step="0.01", required)
+          div
+          label(for="imgurl") Url da Imagem:
+          input#imgurl(type="text", name="imgurl")
+        button.pure-button.pure-button-primary(type="submit") Cadastrar
